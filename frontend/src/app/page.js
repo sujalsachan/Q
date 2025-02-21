@@ -8,13 +8,13 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formattedInput = input.split(" ").map(item => item.trim());
+    const formattedInput = input.split(" ").map((item) => item.trim());
 
     try {
-      const res = await fetch("http://localhost:3000/bfhl", {
+      const res = await fetch("https://two2bcs10801.onrender.com/bfhl", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: formattedInput })
+        body: JSON.stringify({ data: formattedInput }),
       });
 
       const data = await res.json();
@@ -27,7 +27,9 @@ export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-900 p-6">
       <div className="w-full max-w-md bg-gray-800 text-white rounded-2xl shadow-lg p-6">
-        <h1 className="text-center text-2xl font-bold text-blue-400 mb-4">Bajaj Data Processor</h1>
+        <h1 className="text-center text-2xl font-bold text-blue-400 mb-4">
+          Bajaj Data Processor
+        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
@@ -45,9 +47,17 @@ export default function Home() {
         {response && (
           <div className="mt-4 p-4 bg-gray-700 rounded-lg">
             <h2 className="text-lg font-bold text-gray-300">Results:</h2>
-            <p className="text-gray-400"><strong>Numbers:</strong> {response.numbers.join(", ") || "None"}</p>
-            <p className="text-gray-400"><strong>Alphabets:</strong> {response.alphabets.join(", ") || "None"}</p>
-            <p className="text-gray-400"><strong>Highest Alphabet:</strong> {response.highest_alphabet.join(", ") || "None"}</p>
+            <p className="text-gray-400">
+              <strong>Numbers:</strong> {response.numbers.join(", ") || "None"}
+            </p>
+            <p className="text-gray-400">
+              <strong>Alphabets:</strong>{" "}
+              {response.alphabets.join(", ") || "None"}
+            </p>
+            <p className="text-gray-400">
+              <strong>Highest Alphabet:</strong>{" "}
+              {response.highest_alphabet.join(", ") || "None"}
+            </p>
           </div>
         )}
       </div>
