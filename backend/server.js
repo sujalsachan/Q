@@ -1,3 +1,4 @@
+// server.js
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -11,7 +12,7 @@ dotenv.config();
 app.use(cors({ 
   origin: process.env.NODE_ENV === 'production' 
     ? process.env.FRONTEND_URL || '*'
-    : 'http://localhost:5173',
+    : 'http://localhost:3000', // Change this to your local front-end URL if needed
   credentials: true
 }));
 app.use(express.json());
